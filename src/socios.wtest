@@ -1,0 +1,62 @@
+import actividades.*
+import socios.*
+
+
+describe "socios"{
+
+const roque = new Tranquilo(maxActividades=2,edad=39,idiomas=["español"])
+const ana = new Relajado(maxActividades=3,edad=27,idiomas=["portugues","español"])
+const gesell = new ViajeDePlaya(largo=1000)
+const cancun = new ViajeDePlaya(largo=2000)
+const miami = new CiudadTropical(idiomas=["español","ingles"], cantAtracciones=4)
+const pandora = new CiudadTropical(idiomas=["ingles"], cantAtracciones=8)
+const trekking3 = new SalidaDeTrekking(idiomas=["portugues"],kms=250,diasDeSolAlAnio=130)
+
+	test "no puede registrar una tercer actividad" {
+		roque.registrar(gesell)
+		roque.registrar(cancun)
+		roque.registrar(claseGimnasia)
+		assert.that("Ya realizó el máximo de actividades posibles")
+	}
+	
+	test "roque adora el sol"{
+		roque.registrar(gesell)
+		roque.registrar(cancun)
+		assert.that(roque.adoraElSol())
+	}
+	
+	test "roque se esforzo en cancun solamente"{
+		roque.registrar(gesell)
+		roque.registrar(cancun)
+		assert.equals([cancun],roque.actividadesEsforzadas())
+	}
+	
+	test "ana realiza 3 actividades"{
+		ana.registrar(gesell)
+		ana.registrar(cancun)
+		ana.registrar(claseGimnasia)
+		assert.equals([gesell,cancun,claseGimnasia], ana.actividadesRealizadas())
+	}
+	
+	test "ana no adora el sol"{
+		ana.registrar(gesell)
+		ana.registrar(cancun)
+		ana.registrar(claseGimnasia)
+		assert.notThat(ana.adoraElSol())
+	}
+	
+	test "ana se esforzo en cancun y en gimnasia"{
+		ana.registrar(gesell)
+		ana.registrar(cancun)
+		ana.registrar(claseGimnasia)
+		assert.equals([cancun,claseGimnasia],ana.actividadesEsforzadas())
+	}
+	
+	test "a ana le gusta miami y trekking3 pero no  pandora"{
+		assert.notThat(ana.leGusta(pandora))
+		assert.that(ana.leGusta(miami))
+		assert.that(ana.leGusta(trekking3))
+	}
+	
+	
+}

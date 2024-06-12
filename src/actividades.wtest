@@ -1,0 +1,107 @@
+import actividades.*
+
+describe "excursiones"{
+	
+const bariloche = new ExcursionACiudad(idiomas=["español"], cantAtracciones=4)
+const miami = new CiudadTropical(idiomas=["español","ingles"], cantAtracciones=4)
+const madrid = new ExcursionACiudad(idiomas=["español","catalán"], cantAtracciones=8)
+const pandora = new CiudadTropical(idiomas=["ingles"], cantAtracciones=8)
+const ituzaingo = new CiudadTropical(idiomas=["ingles"], cantAtracciones=10)
+
+const trekking1 = new SalidaDeTrekking(idiomas=["español"],kms=100,diasDeSolAlAnio=120)
+const trekking2 = new SalidaDeTrekking(idiomas=["ingles","español"],kms=50,diasDeSolAlAnio=240)
+const trekking3 = new SalidaDeTrekking(idiomas=["portugues"],kms=250,diasDeSolAlAnio=130)
+	
+	test "bariloche lleva 2 dias" {
+		assert.equals(2, bariloche.dias())
+	}
+	test "bariloche sin esfuerzo" {
+		assert.notThat(bariloche.implicaEsfuerzo())
+	}
+	test "bariloche sin bronceado" {
+		assert.notThat(bariloche.bronceado())
+	}
+	test "bariloche aburrido" {
+		assert.notThat(bariloche.esInteresante())
+	}
+	
+	test "miami lleva 3 dias" {
+		assert.equals(3, miami.dias())
+	}
+		test "miami sin esfuerzo" {
+		assert.notThat(miami.implicaEsfuerzo())
+	}
+	test "miami con bronceado" {
+		assert.that(miami.bronceado())
+	}
+	test "miami divertido" {
+		assert.that(miami.esInteresante())
+	}
+	
+	test "madrid lleva 4 dias" {
+		assert.equals(4, madrid.dias())
+	}
+	test "madrid con esfuerzo" {
+		assert.that(madrid.implicaEsfuerzo())
+	}
+	test "madrid sin bronceado" {
+		assert.notThat(madrid.bronceado())
+	}
+	
+	test "pandora lleva 5 dias" {
+		assert.equals(5, pandora.dias())
+	}
+	test "pandora con esfuerzo" {
+		assert.that(pandora.implicaEsfuerzo())
+	}
+	test "pandora con bronceado" {
+		assert.that(pandora.bronceado())
+	}
+	
+	test "ituzaingo lleva 6 dias" {
+		assert.equals(6, ituzaingo.dias())
+	}
+	test "ituzaingo sin esfuerzo" {
+		assert.notThat(ituzaingo.implicaEsfuerzo())
+	}
+	test "ituzaingo con bronceado" {
+		assert.that(ituzaingo.bronceado())
+	}
+	
+	test "trekking1 lleva 2 dias" {
+		assert.equals(2, trekking1.dias())
+	}
+	test "trekking1 con esfuerzo" {
+		assert.that(trekking1.implicaEsfuerzo())
+	}
+	test "trekking1 sin bronceado" {
+		assert.notThat(trekking1.bronceado())
+	}
+	
+	test "trekking2 lleva 1 dia" {
+		assert.equals(1, trekking2.dias())
+	}
+	test "trekking2 sin esfuerzo" {
+		assert.notThat(trekking2.implicaEsfuerzo())
+	}
+	test "trekking2 con bronceado" {
+		assert.that(trekking2.bronceado())
+	}
+	test "trekking2 divertido" {
+		assert.that(trekking2.esInteresante())
+	}
+	
+	test "trekking3 lleva 5 dias" {
+		assert.equals(5, trekking3.dias())
+	}
+	test "trekking3 con esfuerzo" {
+		assert.that(trekking3.implicaEsfuerzo())
+	}
+	test "trekking3 con bronceado" {
+		assert.that(trekking3.bronceado())
+	}
+	test "trekking3 aburrido" {
+		assert.notThat(trekking3.esInteresante())
+	}
+	
+}
