@@ -28,7 +28,7 @@ class Socio{
 }
 
 class Tranquilo inherits Socio{
-	override method leGusta(actividad) = actividad.dias() > 4
+	override method leGusta(actividad) = actividad.dias() >= 4
 }
 
 class Coherente inherits Socio{
