@@ -1,6 +1,6 @@
 
 class Viaje{
-	var idiomas = []
+	const idiomas = #{}
 	
 	method idiomas() = idiomas
 	method implicaEsfuerzo()
@@ -58,23 +58,23 @@ object claseGimnasia inherits Viaje{
 object tallerLiterario inherits Viaje{
 	const libros = []
 	
-	override method idiomas() = libros.forEach({ l => idiomas.add(l.idioma()) })
+	override method idiomas() = libros.map({l => l.idioma()}).asSet()
 	override method dias() = libros.size()+1
 	override method implicaEsfuerzo() = libros.any({ l => l.paginas() > 500 }) or self.autores() == 1
 	override method bronceado() = false
 	
+	method autores() = libros.map({l => l.autor()}).asSet()
+	
+/*
 	method autores(){
 		const autores = #{}
 		return libros.forEach({ l=> autores.add(l.autor()) })
 	}
+*/
 }
 
 class Libro{
-	var idioma
-	var paginas
-	var autor
-	
-	method idioma() = idioma
-	method paginas() = paginas
-	method autor() = autor
+	const property idioma
+	const property paginas
+	const property autor
 }

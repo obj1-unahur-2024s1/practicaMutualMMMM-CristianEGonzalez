@@ -2,8 +2,7 @@ import actividades.*
 
 class Socio{
 	const actividadesRealizadas = []
-	const actividadesEsforzadas = []
-	const idiomas = []
+	const idiomas = #{}
 	var edad
 	var maxActividades
 	
